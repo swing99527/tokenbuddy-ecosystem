@@ -1,7 +1,7 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "site.tokenbuddy/mcp",
-  "description": "Scoped AI gateway FinOps, live model pricing, balance alerts, usage exports, and reseller operations via Streamable HTTP MCP.",
+  "description": "AI gateway FinOps, live model pricing, balance alerts, usage exports, and reseller ops via MCP.",
   "version": "1.0.0",
   "websiteUrl": "https://tokenbuddy.site",
   "repository": {
