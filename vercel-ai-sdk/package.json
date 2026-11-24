@@ -1,0 +1,48 @@
+{
+  "name": "@tokenbuddy/ai-sdk",
+  "version": "0.1.0",
+  "description": "TokenBuddy AI Gateway provider for the Vercel AI SDK — 0% top-up surcharge, sticky prompt caching, hard spend caps, and 40+ LLM & multimodal models via one OpenAI-compatible endpoint.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://tokenbuddy.site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swing99527/tokenbuddy-ecosystem.git",
+    "directory": "vercel-ai-sdk"
+  },
+  "keywords": [
+    "ai-sdk",
+    "vercel",
+    "tokenbuddy",
+    "ai-gateway",
+    "openai",
+    "claude",
+    "gemini",
+    "deepseek",
+    "llm"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@ai-sdk/openai-compatible": "^1.0.0 || ^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  }
+}

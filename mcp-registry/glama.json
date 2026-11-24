@@ -1,0 +1,19 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "maintainers": [
+    "swing99527"
+  ],
+  "name": "TokenBuddy",
+  "description": "Scoped AI gateway FinOps, live model pricing, usage & cost exports, balance alerts, and white-label reseller operations over Streamable HTTP MCP.",
+  "homepage": "https://tokenbuddy.site",
+  "documentation": "https://tokenbuddy.site/docs?article=agent-mcp",
+  "repository": "https://github.com/swing99527/tokenbuddy-ecosystem",
+  "transport": {
+    "type": "streamable-http",
+    "url": "https://tokenbuddy.site/api/agent/v1/mcp"
+  },
+  "authentication": {
+    "type": "oauth2",
+    "protectedResourceMetadata": "https://tokenbuddy.site/.well-known/oauth-protected-resource"
+  }
+}

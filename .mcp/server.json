@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "site.tokenbuddy/mcp",
+  "description": "Scoped AI gateway FinOps, live model pricing, balance alerts, usage exports, and reseller operations via Streamable HTTP MCP.",
+  "version": "1.0.0",
+  "websiteUrl": "https://tokenbuddy.site",
+  "repository": {
+    "url": "https://github.com/swing99527/tokenbuddy-ecosystem",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://tokenbuddy.site/api/agent/v1/mcp"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "name": "TokenBuddy — Async Video Generation with Auto-Refund Safety",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tokenbuddy-video",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "video-webhook",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.TOKENBUDDY_BASE_URL || 'https://tokenbuddy.site/v1' }}/videos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.TOKENBUDDY_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'kling-v2-master', prompt: $json.body?.prompt || 'Cinematic aerial shot of Hong Kong harbour at dusk', seconds: $json.body?.seconds || 5 }) }}"
+      },
+      "id": "submit-video-task",
+      "name": "Submit Video Task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "amount": 15,
+        "unit": "seconds"
+      },
+      "id": "wait-poll",
+      "name": "Wait 15s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ ($env.TOKENBUDDY_BASE_URL || 'https://tokenbuddy.site/v1') + '/videos/' + $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.TOKENBUDDY_API_KEY }}"
+            }
+          ]
+        }
+      },
+      "id": "poll-video-task",
+      "name": "Poll Video Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [920, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        }
+      },
+      "id": "check-complete",
+      "name": "Completed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1160, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { id: $json.id, status: $json.status, video_url: $json.url || $json.data?.[0]?.url } }}"
+      },
+      "id": "respond-video",
+      "name": "Respond Video Result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1400, 220]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{ "node": "Submit Video Task", "type": "main", "index": 0 }]]
+    },
+    "Submit Video Task": {
+      "main": [[{ "node": "Wait 15s", "type": "main", "index": 0 }]]
+    },
+    "Wait 15s": {
+      "main": [[{ "node": "Poll Video Status", "type": "main", "index": 0 }]]
+    },
+    "Poll Video Status": {
+      "main": [[{ "node": "Completed?", "type": "main", "index": 0 }]]
+    },
+    "Completed?": {
+      "main": [
+        [{ "node": "Respond Video Result", "type": "main", "index": 0 }],
+        [{ "node": "Wait 15s", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

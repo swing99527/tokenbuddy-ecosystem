@@ -1,0 +1,18 @@
+name: tokenbuddy
+displayName: TokenBuddy AI Gateway & FinOps
+description: Scoped AI gateway FinOps, live model pricing, balance alerts, CSV consumption exports, and reseller operations via Streamable HTTP MCP.
+homepage: https://tokenbuddy.site
+documentation: https://tokenbuddy.site/docs?article=agent-mcp
+repository: https://github.com/swing99527/tokenbuddy-ecosystem
+remote:
+  type: streamable-http
+  url: https://tokenbuddy.site/api/agent/v1/mcp
+  oauth:
+    protectedResourceMetadata: https://tokenbuddy.site/.well-known/oauth-protected-resource
+tags:
+  - ai-gateway
+  - finops
+  - llm-pricing
+  - openai-compatible
+  - billing
+  - mcp

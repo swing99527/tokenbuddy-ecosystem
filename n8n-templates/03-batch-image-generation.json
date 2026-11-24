@@ -1,0 +1,67 @@
+{
+  "name": "TokenBuddy — Batch Image Generation Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tokenbuddy-image",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "image-webhook",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.TOKENBUDDY_BASE_URL || 'https://tokenbuddy.site/v1' }}/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.TOKENBUDDY_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'gpt-image-1', prompt: $json.body?.prompt || 'Minimalist isometric SaaS dashboard illustration on clean slate background', size: $json.body?.size || '1024x1024', n: $json.body?.n || 1 }) }}"
+      },
+      "id": "generate-image",
+      "name": "TokenBuddy Image Generation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [520, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { created: $json.created, images: $json.data } }}"
+      },
+      "id": "respond-images",
+      "name": "Respond Image Result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [800, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{ "node": "TokenBuddy Image Generation", "type": "main", "index": 0 }]]
+    },
+    "TokenBuddy Image Generation": {
+      "main": [[{ "node": "Respond Image Result", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
