@@ -1,5 +1,7 @@
 # TokenBuddy Ecosystem — SDKs, MCP Registry, n8n Templates & Integrations
 
+[![TokenBuddy MCP connector](https://glama.ai/mcp/connectors/site.tokenbuddy/mcp/badges/score.svg)](https://glama.ai/mcp/connectors/site.tokenbuddy/mcp)
+
 Official public ecosystem integrations for **[TokenBuddy](https://tokenbuddy.site)** — a unified AI API gateway for LLMs, image generation, and video generation with **0% top-up surcharge**, sticky prompt caching, hard spend caps, automatic failed-job refunds, and white-label reseller sub-accounts.
 
 ## Links
