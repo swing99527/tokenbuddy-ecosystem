@@ -13,7 +13,7 @@ Verified copy-paste connection configurations for Dify, Open WebUI, Continue, Li
 
 1. Go to **Settings → Model Provider → OpenAI-API-compatible**.
 2. Set **API Endpoint URL** to `https://tokenbuddy.site/v1`.
-3. Paste your `TOKENBUDDY_API_KEY` and enter model IDs from https://tokenbuddy.site/pricing (e.g., `claude-sonnet-4-5`, `gpt-5`, `gemini-2.5-pro`, `deepseek-v3`).
+3. Paste your `TOKENBUDDY_API_KEY` and enter model IDs from https://tokenbuddy.site/pricing (e.g., `claude-sonnet-5-5`, `gpt-6-sol`, `claude-opus-5-5`, `deepseek-v4.1-flash-hx`).
 
 ## 2. Open WebUI
 
@@ -29,14 +29,14 @@ name: TokenBuddy
 version: 1.0.0
 schema: v1
 models:
-  - name: Claude Sonnet 4.5 (TokenBuddy)
+  - name: Claude Sonnet 5.5 (TokenBuddy)
     provider: openai
-    model: claude-sonnet-4-5
+    model: claude-sonnet-5-5
     apiBase: https://tokenbuddy.site/v1
     apiKey: ${TOKENBUDDY_API_KEY}
-  - name: GPT-5 (TokenBuddy)
+  - name: GPT-6 Sol (TokenBuddy)
     provider: openai
-    model: gpt-5
+    model: gpt-6-sol
     apiBase: https://tokenbuddy.site/v1
     apiKey: ${TOKENBUDDY_API_KEY}
 ```
@@ -50,10 +50,10 @@ endpoints:
       apiKey: "${TOKENBUDDY_API_KEY}"
       baseURL: "https://tokenbuddy.site/v1"
       models:
-        default: ["claude-sonnet-4-5", "gpt-5", "gemini-2.5-pro", "deepseek-v3"]
+        default: ["claude-sonnet-5-5", "gpt-6-sol", "claude-opus-5-5", "deepseek-v4.1-flash-hx"]
         fetch: true
       titleConvo: true
-      titleModel: "gpt-5-mini"
+      titleModel: "claude-haiku-5-5"
 ```
 
 ## 5. Claude Code (Native Anthropic Messages + Prompt Caching)
@@ -69,4 +69,4 @@ claude
 - **Provider**: OpenAI Compatible
 - **Base URL**: `https://tokenbuddy.site/v1`
 - **API Key**: `sk-your-tokenbuddy-key`
-- **Recommended Models**: `claude-sonnet-4-5`, `gpt-5`, `gemini-2.5-pro`, `deepseek-v3`
+- **Recommended Models**: `claude-sonnet-5-5`, `gpt-6-sol`, `claude-opus-5-5`, `deepseek-v4.1-flash-hx`

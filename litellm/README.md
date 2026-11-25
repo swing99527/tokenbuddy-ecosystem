@@ -16,7 +16,7 @@ import os
 from litellm import completion
 
 resp = completion(
-    model="openai/claude-sonnet-4-5",
+    model="openai/claude-sonnet-5-5",
     api_base=os.environ.get("TOKENBUDDY_BASE_URL", "https://tokenbuddy.site/v1"),
     api_key=os.environ["TOKENBUDDY_API_KEY"],
     messages=[{"role": "user", "content": "Summarize our gateway reliability."}],

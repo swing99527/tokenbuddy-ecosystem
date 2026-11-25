@@ -20,7 +20,7 @@ const tokenbuddy = createTokenBuddy(createOpenAICompatible, {
 })
 
 const { text } = await generateText({
-  model: tokenbuddy('claude-sonnet-4-5'),
+  model: tokenbuddy('claude-sonnet-5-5'),
   prompt: 'Explain how sticky prompt cache routing lowers coding agent cost.',
 })
 

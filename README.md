@@ -2,7 +2,7 @@
 
 [![TokenBuddy MCP connector](https://glama.ai/mcp/connectors/site.tokenbuddy/mcp/badges/score.svg)](https://glama.ai/mcp/connectors/site.tokenbuddy/mcp)
 
-Official public ecosystem integrations for **[TokenBuddy](https://tokenbuddy.site)** — a unified AI API gateway for LLMs, image generation, and video generation with **0% top-up surcharge**, sticky prompt caching, hard spend caps, automatic failed-job refunds, and white-label reseller sub-accounts.
+Official public ecosystem integrations for **[TokenBuddy](https://tokenbuddy.site)** — a unified AI API gateway for LLMs, image generation, and video generation with **0% top-up surcharge** (vs 5.5% on OpenRouter), **Save 20%** flagship Claude/GPT pricing, fixed per-image pricing (`$0.0145/image`), Seedance 2.5 video generation, sticky prompt caching, hard spend caps, and white-label reseller storefronts.
 
 ## Links
 
@@ -34,7 +34,7 @@ curl https://tokenbuddy.site/v1/chat/completions \
   -H "Authorization: Bearer $TOKENBUDDY_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "claude-sonnet-4-5",
+    "model": "claude-sonnet-5-5",
     "messages": [{"role": "user", "content": "Hello from TokenBuddy"}]
   }'
 ```

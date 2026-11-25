@@ -33,7 +33,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'claude-sonnet-4-5', temperature: 0.2, messages: [{ role: 'system', content: 'You are a concise enterprise assistant. Reply in clean JSON with keys summary and action_items.' }, { role: 'user', content: $json.body?.prompt || 'Summarize Q3 AI gateway spend.' }] }) }}",
+        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'claude-sonnet-5-5', temperature: 0.2, messages: [{ role: 'system', content: 'You are a concise enterprise assistant. Reply in clean JSON with keys summary and action_items.' }, { role: 'user', content: $json.body?.prompt || 'Summarize Q3 AI gateway spend.' }] }) }}",
         "options": {
           "timeout": 60000
         }

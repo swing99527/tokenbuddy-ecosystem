@@ -33,7 +33,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'kling-v2-master', prompt: $json.body?.prompt || 'Cinematic aerial shot of Hong Kong harbour at dusk', seconds: $json.body?.seconds || 5 }) }}"
+        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'seedance-2.5-720p-max-discount', prompt: $json.body?.prompt || 'Cinematic aerial shot of Hong Kong harbour at dusk', seconds: $json.body?.seconds || 5 }) }}"
       },
       "id": "submit-video-task",
       "name": "Submit Video Task",

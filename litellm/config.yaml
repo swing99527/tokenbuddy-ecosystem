@@ -1,27 +1,27 @@
 # Drop-in LiteLLM Proxy configuration for TokenBuddy
 # Docs: https://tokenbuddy.site/docs?article=sdks
 # Set TOKENBUDDY_API_KEY in your environment before launching:
-#   litellm --config ecosystem/litellm/config.yaml --port 4000
+#   litellm --config litellm/config.yaml --port 4000
 
 model_list:
-  - model_name: claude-sonnet-4-5
+  - model_name: claude-sonnet-5-5
     litellm_params:
-      model: openai/claude-sonnet-4-5
+      model: openai/claude-sonnet-5-5
       api_base: os.environ/TOKENBUDDY_BASE_URL
       api_key: os.environ/TOKENBUDDY_API_KEY
-  - model_name: gpt-5
+  - model_name: gpt-6-sol
     litellm_params:
-      model: openai/gpt-5
+      model: openai/gpt-6-sol
       api_base: os.environ/TOKENBUDDY_BASE_URL
       api_key: os.environ/TOKENBUDDY_API_KEY
-  - model_name: gemini-2.5-pro
+  - model_name: claude-opus-5-5
     litellm_params:
-      model: openai/gemini-2.5-pro
+      model: openai/claude-opus-5-5
       api_base: os.environ/TOKENBUDDY_BASE_URL
       api_key: os.environ/TOKENBUDDY_API_KEY
-  - model_name: deepseek-v3
+  - model_name: deepseek-v4.1-flash-hx
     litellm_params:
-      model: openai/deepseek-v3
+      model: openai/deepseek-v4.1-flash-hx
       api_base: os.environ/TOKENBUDDY_BASE_URL
       api_key: os.environ/TOKENBUDDY_API_KEY
 

@@ -33,7 +33,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'gpt-image-1', prompt: $json.body?.prompt || 'Minimalist isometric SaaS dashboard illustration on clean slate background', size: $json.body?.size || '1024x1024', n: $json.body?.n || 1 }) }}"
+        "jsonBody": "={{ JSON.stringify({ model: $json.body?.model || 'gpt-image-2.5-c', prompt: $json.body?.prompt || 'Minimalist isometric SaaS dashboard illustration on clean slate background', size: $json.body?.size || '1024x1024', n: $json.body?.n || 1 }) }}"
       },
       "id": "generate-image",
       "name": "TokenBuddy Image Generation",
